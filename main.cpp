@@ -19,6 +19,10 @@ int sigmaZ(int distance){
       {135, 10},
       {205, 20}
   };
+  for (auto it = mapD.begin(); it != mapD.end(); ++it)
+    if (it->second == distance)
+        return it->first;
+  return 1;
 }
 
 int emissionCalculate()
@@ -43,6 +47,7 @@ int concentration(int distance)
   
   int sigma_z = sigmaZ(distance); 
   int c = (2*q)/(sqrt(M_PI*2)*sigma_z); //*u
+  return c;
 }
 
 
