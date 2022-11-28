@@ -35,6 +35,7 @@ double emissionCalculate(int experiment)
   case 3:
     result = (0.525 * dieselP + 0.444 * gasP + 0.031 * electroP - 5.6) * 0.1;
     break;
+  // *********************************************************************************
   case 4:
     result = (0.525 * dieselCO2 + 0.444 * gasCO2 + 0.031 * electroCO2) * 0.1;
     break;
@@ -44,6 +45,7 @@ double emissionCalculate(int experiment)
   case 6:
     result = (0.525 * dieselCO2 + 0.444 * gasCO2 + 0.031 * electroCO2 - 5.6) * 0.1;
     break;
+  // *********************************************************************************
   case 7:
     result = (0.525 * (dieselCO2 + dieselP*coeficient) + 0.444 * (gasCO2 + gasP*coeficient) + 0.031 * (electroCO2 + electroP*coeficient)) * 0.1;
     break;
@@ -52,8 +54,6 @@ double emissionCalculate(int experiment)
     break;
   case 9:
     result = (0.525 * (dieselCO2 + dieselP*coeficient) + 0.444 * (gasCO2 + gasP*coeficient) + 0.031 * (electroCO2 + electroP*coeficient) - 5.6) * 0.1;
-    break;
-  default:
     break;
   }
 
@@ -76,22 +76,12 @@ double concentration(int q)
   return c;
 }
 
-// |1|     50
-// |*|
-// |*|
-// |*|
-// |*|
-// |*|
-// |*|
-
 int main()
 {
   // Number of rows and columns
   const int cols = 51;
 
-
   double expStandartP[cols];
-  //std::fill(expStandartP, expStandartP + sizeof(expStandartP), 0 );
   double expElectroP[cols];
   double expWeightP[cols];
 
@@ -102,6 +92,19 @@ int main()
   double expStandartAll[cols];
   double expElectroAll[cols];
   double expWeightAll[cols];
+
+
+ for(int n =0; n<cols; n++){
+    expStandartP[n] = 0;
+    expElectroP[n] = 0;
+    expWeightP[n] = 0;
+    expStandartCO2[n] = 0;
+    expElectroCO2[n] = 0;
+    expWeightCO2[n] = 0;
+    expStandartAll[n] = 0;
+    expElectroAll[n] = 0;
+    expWeightAll[n] = 0;
+  }
 
   double emissionsSP = emissionCalculate(1);
   double emissionsEP = emissionCalculate(2);
@@ -147,12 +150,11 @@ int main()
         expElectroAll[j] = expElectroAll[j] + concentration(emissionsEAll);
         expWeightAll[j] = expWeightAll[j] + concentration(emissionsWAll);
       }
-      cout<<("aaaaaaa\n");
     }
   }
 
   for(int i = 0; i < cols; i++){
-    cout<<expStandartP[i];
+    cout<<expWeightAll[i];
     cout<<("\n");
   }
 
