@@ -1,3 +1,10 @@
+/* ****************************************** */
+/* project IMS: 7 Sireni emisi v atmosfere */
+/* authors: Simona Ceskova xcesko00 */
+/*          Zuzana Kopcilová xkopci02 */
+/* date: 03.12.2022*/
+/* ****************************************** */
+
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
@@ -75,7 +82,7 @@ double concentration(int q)
 {
   // for 0.1km distance the value of sigma_z is 5
   int sigma_z = 5;
-  int windSpeed = 4; // m/s
+  int windSpeed = 4; // m/h
 
   double c = (2 * q) / (sqrt(M_PI * 2) * sigma_z * windSpeed);
   return c;
